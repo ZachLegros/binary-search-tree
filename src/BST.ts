@@ -1,6 +1,6 @@
 import { MyNode } from "./MyNode";
 
-class BinairySearchTree {
+class BinarySearchTree {
     private root: MyNode;
     private values: number[];
 
@@ -17,26 +17,31 @@ class BinairySearchTree {
         return Math.round(values.length / 2);
     }
 
+    public getRoot(): MyNode {
+        return this.root;
+    }
+
     // assuming that nodeToAdd has null for left and right
-    public add(nodeToAdd: MyNode, current: MyNode): void {
+    public add(nodeToAdd: MyNode, current: MyNode): boolean {
         const comparaison = nodeToAdd.compareTo(current);
         if (comparaison != 0) {
             if (comparaison > 0) {
                 if (current.getRight() == null) {
                     current.setRight(nodeToAdd);
-                    return;
+                    return true;
                 }
-                this.add(nodeToAdd, current.getRight());
+                return this.add(nodeToAdd, current.getRight());
             }
             if (comparaison < 0) {
                 if (current.getLeft() == null) {
                     current.setLeft(nodeToAdd);
-                    return;
+                    return true;
                 }
-                this.add(nodeToAdd, current.getLeft());
+                return this.add(nodeToAdd, current.getLeft());
             }
+        } else {
+            return false;
         }
-        return;
     }
 
     public contains(value: number): boolean {
@@ -62,4 +67,4 @@ class BinairySearchTree {
     }
 }
 
-export { BinairySearchTree };
+export { BinarySearchTree };
