@@ -1,6 +1,12 @@
 import { MyNode } from "./MyNode";
 
-class BinarySearchTree {
+interface BST {
+    add(nodeToAdd: MyNode, current: MyNode): boolean;
+    contains(value: number): boolean;
+    inOrder(): void;
+}
+
+class BinarySearchTree implements BST {
     private root: MyNode;
     private values: number[];
     private traversed: string;
