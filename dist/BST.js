@@ -1,30 +1,24 @@
-import { MyNode } from "./MyNode";
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const MyNode_1 = require("./MyNode");
 class BinarySearchTree {
-    private root: MyNode;
-    private values: number[];
-    private traversed: string;
-
     // assuming that values is not empty
-    constructor(values: number[]) {
+    constructor(values) {
         this.values = values.sort();
         const indexOfRoot = this.getRootIndex(this.values);
         const valueOfRoot = this.values[indexOfRoot];
-        this.root = new MyNode(valueOfRoot, null, null);
+        this.root = new MyNode_1.MyNode(valueOfRoot, null, null);
         this.build();
         this.traversed = "";
     }
-
-    private getRootIndex(values: number[]): number {
+    getRootIndex(values) {
         return Math.round(values.length / 2);
     }
-
-    public getRoot(): MyNode {
+    getRoot() {
         return this.root;
     }
-
     // assuming that nodeToAdd has null for left and right
-    public add(nodeToAdd: MyNode, current: MyNode): boolean {
+    add(nodeToAdd, current) {
         const comparaison = nodeToAdd.compareTo(current);
         if (comparaison != 0) {
             if (comparaison > 0) {
@@ -41,40 +35,39 @@ class BinarySearchTree {
                 }
                 return this.add(nodeToAdd, current.getLeft());
             }
-        } else {
+        }
+        else {
             return false;
         }
     }
-
-    public contains(value: number): boolean {
-        let found: boolean = false;
-        let current: MyNode = this.root;
+    contains(value) {
+        let found = false;
+        let current = this.root;
         while (!found && current != null) {
             if (value == current.getValue()) {
                 found = true;
-            } else if (value > current.getValue()) {
+            }
+            else if (value > current.getValue()) {
                 current = current.getRight();
-            } else {
+            }
+            else {
                 current = current.getLeft();
             }
         }
         return found;
     }
-
-    private build(): void {
+    build() {
         for (var i = 0; i < this.values.length; i++) {
-            let nodeToAdd = new MyNode(this.values[i], null, null);
+            let nodeToAdd = new MyNode_1.MyNode(this.values[i], null, null);
             this.add(nodeToAdd, this.root);
         }
     }
-
-    public inOrder(): string {
+    inOrder() {
         this.traversed = "";
         this.traverseInOrder(this.root);
         return this.traversed;
     }
-
-    private traverseInOrder(current: MyNode): void {
+    traverseInOrder(current) {
         if (current != null) {
             this.traverseInOrder(current.getLeft());
             this.traversed += `${current.getValue()}; `;
@@ -82,5 +75,4 @@ class BinarySearchTree {
         }
     }
 }
-
-export { BinarySearchTree };
+exports.BinarySearchTree = BinarySearchTree;

@@ -1,0 +1,23 @@
+{
+    "name": "binairy-search-tree",
+    "version": "1.0.0",
+    "description": "",
+    "main": "BST.js",
+    "scripts": {
+        "test": "node dist/Test.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ZachLegros/binairy-search-tree.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ZachLegros/binairy-search-tree/issues"
+    },
+    "homepage": "https://github.com/ZachLegros/binairy-search-tree#readme",
+    "dependencies": {
+        "performance-now": "^2.1.0"
+    }
+}

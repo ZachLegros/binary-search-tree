@@ -1,46 +1,30 @@
-interface BSTNode {
-    setLeft(node: MyNode): void;
-    setRight(node: MyNode): void;
-    getValue(): number;
-    getLeft(): MyNode;
-    getRight(): MyNode;
-    compareTo(other: MyNode): number;
-}
-class MyNode implements BSTNode {
-    private value: number;
-    private left: MyNode;
-    private right: MyNode;
-
-    constructor(value: number, left: MyNode, right: MyNode) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class MyNode {
+    constructor(value, left, right) {
         this.value = value;
         this.left = left;
         this.right = right;
     }
-
-    public setLeft(node: MyNode): void {
+    setLeft(node) {
         this.left = node;
     }
-
-    public setRight(node: MyNode): void {
+    setRight(node) {
         this.right = node;
     }
-
-    public getValue(): number {
+    getValue() {
         return this.value;
     }
-
-    public getLeft(): MyNode {
+    getLeft() {
         return this.left;
     }
-
-    public getRight(): MyNode {
+    getRight() {
         return this.right;
     }
-
     // Method to compare to MyNode objects:
     // Returns 1 if the current node's value is bigger than the other node's value,
     // returns -1 for the opposite and returns 0 if their value is equal.
-    public compareTo(other: MyNode): number {
+    compareTo(other) {
         if (this.value == other.value) {
             return 0;
         }
@@ -50,5 +34,4 @@ class MyNode implements BSTNode {
         return -1;
     }
 }
-
-export { MyNode };
+exports.MyNode = MyNode;
